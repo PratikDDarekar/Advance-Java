@@ -1,0 +1,63 @@
+package com.jsp.jdbccrud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class personSelectOperation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			
+			//add driverfile
+			Class.forName("org.postgresql.Driver");
+			
+			
+			// Established connection
+						String url = "jdbc:postgresql://localhost:5432/personcrud";
+						String user = "postgres";
+						String password = "root";
+						Connection con = DriverManager.getConnection(url, user, password);
+						
+						Statement st = con.createStatement();
+						
+						String query = "Select * FROM person";
+						
+						st.execute(query);
+						
+						ResultSet rs = st.getResultSet();
+						
+						while(rs.next())
+						{
+							int id = rs.getInt(1);
+							int name =rs.getInt(2);
+							int age = rs.getInt(3);
+							System.out.print("id : "+id+" name : "+name+" age "+age);
+							System.out.println();
+							
+							
+						}
+
+			con.close();
+			
+			
+			
+			
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

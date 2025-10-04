@@ -1,0 +1,10 @@
+package com.jsp.studcrud;
+
+public class ReadStudentCrud {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

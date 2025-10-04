@@ -1,0 +1,42 @@
+package devcrud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DevUpdateCrud {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+
+			String url1 = "jdbc:postgresql://localhost:5432/devcrud";
+			String username = "postgres";
+			String password = "root";
+
+			Connection con = DriverManager.getConnection(url1, username, password);
+			Statement st = con.createStatement();
+
+			String query = "UPDATE developer SET name = 'Rutvik' where name = 'kartik'";
+			
+
+			 st.execute(query);
+		
+
+			con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

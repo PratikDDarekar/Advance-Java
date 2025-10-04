@@ -1,0 +1,48 @@
+package com.jsp.jdbccrud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class PersonInsertOperation {
+
+	public static void main(String[] args) {
+
+		try {
+
+			// load Driverclass
+			Class.forName("org.postgresql.Driver");
+
+			// Established connection
+			String url = "jdbc:postgresql://localhost:5432/personcrud";
+			String user = "postgres";
+			String password = "root";
+			Connection con = DriverManager.getConnection(url, user, password);
+
+			System.out.println("CONNECTION: " + con);
+
+			// create Statement
+			Statement st = con.createStatement();
+
+			String sql = "INSERT INTO person VALUES(101, 'Arun', 234)";
+			String sq2 = "INSERT INTO person VALUES(102, 'Aruk', 234)";
+			String sq3 = "INSERT INTO person VALUES(103, 'Arin', 234)";
+			String sq4 = "INSERT INTO person VALUES(104, 'Ayun', 234)";
+
+			// execute connection
+			// st.execute(sql);
+			st.execute(sq2);
+			st.execute(sq3);
+			st.execute(sq4);
+
+			con.close();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+}
